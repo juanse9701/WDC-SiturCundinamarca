@@ -9,9 +9,9 @@
             alias: "name",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "value",
-            alias: "value",
-            dataType: tableau.dataTypeEnum.float
+            id: "id",
+            alias: "id",
+            dataType: tableau.dataTypeEnum.string
         }];
 
         var tableInfo = {
@@ -31,7 +31,7 @@
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
                     "name": feat[i].name,
-                    "value": feat[i].value
+                    "id": feat[i].id
                 });
             }
 
@@ -44,9 +44,9 @@
         /**
          * el metodo get recibe la url de los datos y un callback que va a tratarlos
          */
-        $.get("http://nube.realityapp.co:1240/api/v1/estadisticas/sdmx/all/", function (resp) {
+        $.get("http://api.citybik.es/v2/networks/", function (resp) {
             // var feat = resp.features,
-            var feat = resp // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
+            var feat = resp.networks // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
             console.log(feat);
             table.appendRows(createTable(feat));
             doneCallback();
