@@ -5,8 +5,8 @@
     // Define the schema
     myConnector.getSchema = function (schemaCallback) {
         var cols = [{
-            id: "name",
-            alias: "name",
+            id: "title",
+            alias: "title",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "id",
@@ -30,7 +30,7 @@
             // alert(feat[0].name)
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
-                    "name": feat[i].name,
+                    "title": feat[i].title,
                     "id": feat[i].id
                 });
             }
@@ -44,9 +44,9 @@
         /**
          * el metodo get recibe la url de los datos y un callback que va a tratarlos
          */
-        $.get("http://api.citybik.es/v2/networks/", function (resp) {
+        $.get("https://jsonplaceholder.typicode.com/todos/", function (resp) {
             // var feat = resp.features,
-            var feat = resp.networks // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
+            var feat = resp // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
             console.log(feat);
             table.appendRows(createTable(feat));
             doneCallback();
