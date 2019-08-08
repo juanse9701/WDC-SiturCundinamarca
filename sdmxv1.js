@@ -11,7 +11,7 @@
         }, {
             id: "id",
             alias: "id",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.float
         }];
 
         var tableInfo = {
