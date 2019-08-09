@@ -5,12 +5,12 @@
     // Define the schema
     myConnector.getSchema = function (schemaCallback) {
         var cols = [{
-            id: "title",
-            alias: "title",
+            id: "name",
+            alias: "name",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "id",
-            alias: "id",
+            id: "value",
+            alias: "value",
             dataType: tableau.dataTypeEnum.float
         }];
 
@@ -30,8 +30,8 @@
             // alert(feat[0].name)
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
-                    "title": feat[i].title,
-                    "id": feat[i].id
+                    "name": feat[i].name,
+                    "value": feat[i].value
                 });
             }
 
@@ -44,7 +44,7 @@
         /**
          * el metodo get recibe la url de los datos y un callback que va a tratarlos
          */
-        $.get("https://jsonplaceholder.typicode.com/todos/", function (resp) {
+        $.get("http://nube.realityapp.co:1240/api/v1/estadisticas/sdmx/all/", function (resp) {
             // var feat = resp.features,
             var feat = resp // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
             console.log(feat);
