@@ -5,14 +5,27 @@
     // Define the schema
     myConnector.getSchema = function (schemaCallback) {
         var cols = [{
-            id: "name",
-            alias: "name",
+            id: "periodo",
+            alias: "periodo",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "value",
-            alias: "value",
+            id: "departamento",
+            alias: "departamento",
+            dataType: tableau.dataTypeEnum.string
+        },{
+            id: "indicador",
+            alias: "indicador",
+            dataType: tableau.dataTypeEnum.string
+        },{
+            id: "medicion",
+            alias: "medicion",
+            dataType: tableau.dataTypeEnum.string
+        },{
+            id: "valor",
+            alias: "valor",
             dataType: tableau.dataTypeEnum.float
-        }];
+        }
+    ];
 
         var tableInfo = {
             id: "SDXM",
@@ -30,8 +43,11 @@
             // alert(feat[0].name)
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
-                    "name": feat[i].name,
-                    "value": feat[i].value
+                    "periodo": feat[i].periodo,
+                    "departamento": feat[i].departamento,
+                    "indicador": feat[i].indicador,
+                    "medicion": feat[i].medicion,
+                    "valor": feat[i].valor
                 });
             }
 
