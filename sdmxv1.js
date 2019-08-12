@@ -23,7 +23,7 @@
         },{
             id: "valor",
             alias: "valor",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.float
         }
     ];
 
