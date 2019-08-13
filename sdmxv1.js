@@ -47,7 +47,7 @@
                     "departamento": feat[i].departamento,
                     "indicador": feat[i].indicador,
                     "medicion": feat[i].medicion,
-                    "valor": feat[i].valor
+                    "valor": parseFloat((feat[i].valor).replace(/,/g, '.'))
                 });
             }
 
