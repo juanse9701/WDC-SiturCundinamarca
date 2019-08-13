@@ -47,10 +47,9 @@
                     "departamento": feat[i].departamento,
                     "indicador": feat[i].indicador,
                     "medicion": feat[i].medicion,
-                    "valor": parseFloat((feat[i].valor).replace(/,/g, '.'))
+                    "valor": parseFloat(feat[i].valor).replace(/,/g, '.')
                 });
             }
-
             return tableData;
     }
 
