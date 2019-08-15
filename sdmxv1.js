@@ -40,14 +40,14 @@
     const createTable = function (feat) {
         tableData = [];
             // Iterate over the JSON object
-            // alert(feat[0].name)
+            alert(feat[0].periodo)
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
                     "periodo": feat[i].periodo,
                     "departamento": feat[i].departamento,
                     "indicador": feat[i].indicador,
                     "medicion": feat[i].medicion,
-                    "valor": parseFloat(feat[i].valor).replace(/,/g, '.')
+                    "valor": parseFloat((feat[i].valor).replace(/,/g, '.'))
                 });
             }
             return tableData;
