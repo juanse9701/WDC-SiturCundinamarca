@@ -47,7 +47,7 @@
                     "departamento": feat[i].departamento,
                     "indicador": feat[i].indicador,
                     "medicion": feat[i].medicion,
-                    "valor": parseFloat((feat[i].valor).replace(/,/g, '.'))
+                    "valor": parseFloat((feat[i].valor))
                 });
             }
             return tableData;
@@ -59,7 +59,9 @@
         /**
          * el metodo get recibe la url de los datos y un callback que va a tratarlos
          */
-        $.get("http://nube.realityapp.co:1240/api/v1/estadisticas/sdmx/all/", function (resp) {
+        var dateObj = JSON.parse(tableau.connectionData)
+        slug = dateObj.slug;
+        $.get("http://nube.realityapp.co:1240/api/v1/estadisticas/sdmx/all/?slug=" + slug, function (resp) {
             // var feat = resp.features,
             var feat = resp // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
             console.log(feat);
@@ -73,10 +75,25 @@
     // Create event listeners for when the user submits the form
 })();
 
+
 $(document).ready(function() {
-    console.log('llega');
-    setTimeout(function () {
+    $("#submitButton").click(function() {
+        var dateObj = {
+            slug: 'receptor'
+        };
+        tableau.connectionData = JSON.stringify(dateObj);
         tableau.connectionName = "Tableau v1.1"; // This will be the data source name in Tableau
         tableau.submit(); // This sends the connector object to Tableau
-    }, 500)
+    });
+});
+
+$(document).ready(function() {
+    $("#oferta").click(function() {
+        var dateObj = {
+            slug: 'oferta'
+        };
+        tableau.connectionData = JSON.stringify(dateObj);
+        tableau.connectionName = "Tableau v1.1"; // This will be the data source name in Tableau
+        tableau.submit(); // This sends the connector object to Tableau
+    });
 });
