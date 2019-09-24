@@ -7,7 +7,7 @@
         var cols = [{
             id: "periodo",
             alias: "periodo",
-            dataType: tableau.dataTypeEnum.string
+            dataType: tableau.dataTypeEnum.date
         }, {
             id: "departamento",
             alias: "departamento",
@@ -91,6 +91,28 @@ $(document).ready(function() {
     $("#oferta").click(function() {
         var dateObj = {
             slug: 'oferta'
+        };
+        tableau.connectionData = JSON.stringify(dateObj);
+        tableau.connectionName = "Tableau v1.1"; // This will be the data source name in Tableau
+        tableau.submit(); // This sends the connector object to Tableau
+    });
+});
+
+$(document).ready(function() {
+    $("#empleo").click(function() {
+        var dateObj = {
+            slug: 'empleo'
+        };
+        tableau.connectionData = JSON.stringify(dateObj);
+        tableau.connectionName = "Tableau v1.1"; // This will be the data source name in Tableau
+        tableau.submit(); // This sends the connector object to Tableau
+    });
+});
+
+$(document).ready(function() {
+    $("#ie").click(function() {
+        var dateObj = {
+            slug: 'interno_emisor'
         };
         tableau.connectionData = JSON.stringify(dateObj);
         tableau.connectionName = "Tableau v1.1"; // This will be the data source name in Tableau
