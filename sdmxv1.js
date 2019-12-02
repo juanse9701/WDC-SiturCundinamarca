@@ -63,7 +63,7 @@
          */
         var dateObj = JSON.parse(tableau.connectionData)
         slug = dateObj.slug;
-        $.get("http://nube.realityapp.co:1240/api/v1/estadisticas/sdmx/all/?slug=" + slug, function (resp) {
+        $.get("https://siturpanel.cundinamarca.gov.co/api/v1/estadisticas/sdmx/all/?slug=" + slug, function (resp) {
             // var feat = resp.features,
             var feat = resp // dependiendo del api el ().results puede cambiar, inclusive puede no ir, depende que devuelva el API.
             console.log(feat);
