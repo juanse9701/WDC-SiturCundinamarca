@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
+## WDC SITUR
+*Web Data Conector (WDC) que extrae los datos de los reportes para la plataforma SITUR Cundinamarca y así visualizarlos en **tableau**.*
 
-You can use the [editor on GitHub](https://github.com/juanse9701/WDC-SiturCundinamarca/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Un **WDC** es una página HTML con codigo JavaScript que conecta los datos web que provienen de una API REST, estos datos son convertidos a formato JSON y son pasados como datos a Tableau.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Por que un HTML?
 
-### Markdown
+Cuando tu abres un WDC en tableau, tu visualizas una página html enlazada a tu código JS y la libreria de WDC.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+      <script src="https://connectors.tableau.com libs/tableauwdc-2.3.latest.js" type="text javascript"></script>
 
-```markdown
-Syntax highlighted code block
+      <script src="yourCode.js" type="text/javascript"></script>
 
-# Header 1
-## Header 2
-### Header 3
+* **tableauwdc-2.3.latest.js** es el archivo o libreria principal para el WDC API. 
 
-- Bulleted
-- List
+## Código JavaScript :
 
-1. Numbered
-2. List
+    (function () {
+    var myConnector = tableau.makeConnector();
 
-**Bold** and _Italic_ and `Code` text
+    myConnector.getSchema = function (schemaCallback) {
 
-[Link](url) and ![Image](src)
-```
+    };
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+    myConnector.getData = function (table, doneCallback) {
 
-### Jekyll Themes
+    };
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/juanse9701/WDC-SiturCundinamarca/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+    tableau.registerConnector(myConnector);
+    })();
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* El código es un función que se invoca inmediatamente (IIFE) para crear un scope local.
+* El objeto de **tableau** no esta definido en nuestro código, pero si esta el la libreria del **WDC**.
+* La función **makeConnector** es un constructor que predefine algunos métodos para nuestro objeto conector.
+* **getSchema** y **getData** son funciones que contendran la lógica para obtener el esquema de la tabla que contendra los datos y descargar los datos.
+* La función **registerConnector** valida el objeto antes de la inicialización.
